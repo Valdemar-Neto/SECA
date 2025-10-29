@@ -88,7 +88,7 @@ static uint32_t adc_read_mv(void){
     adc_oneshot_read(adc_handle, ADC_CHANNEL, &valor_lido);
     return esp_adc_cal_raw_to_voltage(valor_lido, adc_chars);
 
-}o
+}
 //inicializando o handle do wifi
 
 static void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data){
