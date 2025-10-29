@@ -10,8 +10,8 @@
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
 
-#define WIFI_SSID "ORLANDO_FLATS_2.4G"
-#define WIFI_PASS "LISSAMARIE"
+#define WIFI_SSID "SUAREDE"
+#define WIFI_PASS "SUASENHA"
 #define MQTT_BROKER_URL "mqtt://test.mosquitto.org"
 #define MQTT_TOPIC "s3/potenciometro"
 #define LED_GPIO GPIO_NUM_38
