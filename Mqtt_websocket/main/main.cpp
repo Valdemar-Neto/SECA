@@ -10,9 +10,9 @@
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
 
-#define WIFI_SSID "SUAREDE"
-#define WIFI_PASS "SUASENHA"
-#define MQTT_BROKER_URL "mqtt://test.mosquitto.org"
+#define WIFI_SSID "LISE"
+#define WIFI_PASS "VacaTatuCotiaNao"
+#define MQTT_BROKER_URL "mqtt://10.7.224.54:8884"
 #define MQTT_TOPIC "s3/potenciometro"
 #define LED_GPIO GPIO_NUM_38
 
@@ -125,11 +125,12 @@ static void wifi_init(void){
     // condigurando o wifi
 
     wifi_config_t wifi_config = {
-        .sta{
+        .sta = {
             .ssid = WIFI_SSID,
             .password = WIFI_PASS,
-        }
-    }
+            .threshold.authmode = WIFI_AUTH_WPA_WAP2_PSK,
+        },
+    }; 
 
     //setando o wifi como station mode
 
@@ -152,7 +153,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
     switch(event -> event_id){
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG, "CONECTADO AO BROKER MQTT");
-            esp_mqtt_client_publish(client, MQTT_TOPIC, "online" 0, 0, 0);
+            esp_mqtt_client_publish(client, MQTT_TOPIC, "online", 0, 0, 0);
             ESP_LOGI(TAG, "ESCRITO NO TOPICO %s: ", MQTT_TOPIC);
             break;
         case MQTT_EVENT_DATA:
